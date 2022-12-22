@@ -25,7 +25,8 @@
   },
   "pre-commit": [
     "format",
-    "check"
+    "check",
+    "test"
   ],
   "eslintConfig": {
     "extends": [

@@ -4,9 +4,7 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
     "@types/node": "^16.18.10",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
@@ -20,7 +18,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "format": "prettier --write {src,tests}/**/*.{js,tsx,ts,html,scss}",
     "check": "eslint {src,tests}/**/*.{js,tsx,ts}"
@@ -28,7 +26,6 @@
   "pre-commit": [
     "format",
     "check"
-   
   ],
   "eslintConfig": {
     "extends": [
@@ -49,8 +46,13 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react": "^13.4.0",
+    "@types/jest": "^29.2.4",
+    "@types/testing-library__jest-dom": "^5.14.5",
     "eslint": "^8.30.0",
+    "jest": "^27.5.1",
     "pre-commit": "^1.2.2",
-    "prettier": "^2.8.1"
+    "prettier": "^2.8.1",
+    "ts-jest": "^29.0.3"
   }
 }

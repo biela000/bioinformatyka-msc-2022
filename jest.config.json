@@ -1,0 +1,8 @@
+{
+  "testMatch": ["<rootDir>/__tests__/**/*.(spec|test).(ts|js)?(x)"],
+  "testEnvironment": "jsdom",
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"]
+}

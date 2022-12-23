@@ -2,7 +2,7 @@ import React from 'react';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" data-testID="AppComponent">
       <header className="App-header">
         <img className="App-logo" alt="logo" />
         <p>
@@ -12,8 +12,7 @@ function App() {
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
-          rel="noopener noreferrer"
-        >
+          rel="noopener noreferrer">
           Learn React
         </a>
       </header>

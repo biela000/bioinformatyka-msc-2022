@@ -17,7 +17,7 @@
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -25,7 +25,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+### `npm run test`
 
 Run jest tests | See [docs](https://jestjs.io/)
 
@@ -37,10 +37,10 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-### `npm format`
+### `npm run format`
 
 Run prettier format command on app and tests files
 
-### `npm check`
+### `npm run check`
 
 Run eslint check on app and tests files

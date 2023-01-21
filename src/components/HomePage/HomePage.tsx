@@ -4,6 +4,7 @@ import classes from './HomePage.module.scss';
 import RNAInput from './RNAInput/RNAInput';
 import Button from '../UI/Button/Button';
 import { useAppDispatch, useAppSelector } from '../../store/storeHooks';
+import PossibleProteinDisplay from './PossibleProteinDisplay/PossibleProteinDisplay';
 
 const RNA_REGEX = /^[AUGCT]*$/i;
 
@@ -56,9 +57,10 @@ function HomePage() {
 					onSubmit={handleRnaSubmit}
 				/>
 			)}
-			{possibleProteins && (
-				<div className={classes['possible-proteins']}></div>
-			)}
+			{possibleProteins &&
+				possibleProteins.map((protein, i) => {
+					return <PossibleProteinDisplay protein={protein} key={i} />;
+				})}
 		</div>
 	);
 }

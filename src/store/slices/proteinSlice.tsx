@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Codon } from '../../types/proteinTypes';
+import { AminoAcidMap } from '../../utils/aminoAcids';
 
 // TODO: Check the translation validity
 const translate = (rna: string): [string[], string[], string[]] => {
@@ -15,7 +17,7 @@ const translate = (rna: string): [string[], string[], string[]] => {
 };
 
 type ProteinState = {
-	possibleProteins?: [string[], string[], string[]];
+	possibleProteins?: [Codon[], Codon[], Codon[]];
 };
 const initialState: ProteinState = {};
 
@@ -30,7 +32,18 @@ export const proteinSlice = createSlice({
 			const rna = action.payload.replace(/T/g, 'U');
 
 			// state = array of arrays of potential proteins
-			state.possibleProteins = translate(rna);
+			const possibileProteinsStrings = translate(rna);
+			state.possibleProteins = [[], [], []];
+			for (let i = 0; i < possibileProteinsStrings.length; i++) {
+				state.possibleProteins[i] = possibileProteinsStrings[i].map(
+					codon => {
+						return {
+							threeLetterCode: codon,
+							aminoAcidLetter: AminoAcidMap[codon],
+						};
+					},
+				);
+			}
 		},
 		deleteProtein: (state, action) => {
 			state = {};

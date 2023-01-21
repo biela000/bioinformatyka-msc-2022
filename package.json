@@ -1,63 +1,63 @@
 {
-  "name": "bioinformatyka-msc-2022",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.9.1",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/node": "^16.18.10",
-    "@types/react": "^18.0.26",
-    "@types/react-dom": "^18.0.9",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5",
-    "react-scripts": "5.0.1",
-    "sass": "^1.57.1",
-    "typescript": "^4.9.4",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "jest",
-    "eject": "react-scripts eject",
-    "format": "prettier --config .prettierrc --write {src,__tests__}/**/*.{js,tsx,ts,html,scss} --no-error-on-unmatched-pattern",
-    "check": "eslint {src,__tests__}/**/*.{js,tsx,ts} --no-error-on-unmatched-pattern"
-  },
-  "pre-commit": [
-    "format",
-    "check",
-    "test"
-  ],
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@testing-library/react": "^13.4.0",
-    "@types/jest": "29.0.3",
-    "@types/testing-library__jest-dom": "^5.14.5",
-    "babel-jest": "^29.3.1",
-    "eslint": "^8.30.0",
-    "jest": "29.0.3",
-    "jest-environment-jsdom": "^29.0.3",
-    "pre-commit": "^1.2.2",
-    "prettier": "^2.8.1",
-    "ts-jest": "29.0.3"
-  }
+	"name": "bioinformatyka-msc-2022",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@reduxjs/toolkit": "^1.9.1",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/user-event": "^13.5.0",
+		"@types/node": "^16.18.10",
+		"@types/react": "^18.0.26",
+		"@types/react-dom": "^18.0.9",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-redux": "^8.0.5",
+		"react-scripts": "5.0.1",
+		"sass": "^1.57.1",
+		"typescript": "^4.9.4",
+		"web-vitals": "^2.1.4"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "jest",
+		"eject": "react-scripts eject",
+		"format": "prettier --config .prettierrc --write {src,__tests__}/**/*.{js,tsx,ts,html,scss} --no-error-on-unmatched-pattern",
+		"check": "eslint {src,__tests__}/**/*.{js,tsx,ts} --no-error-on-unmatched-pattern"
+	},
+	"pre-commit": [
+		"format",
+		"check",
+		"test"
+	],
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@testing-library/react": "^13.4.0",
+		"@types/jest": "29.0.3",
+		"@types/testing-library__jest-dom": "^5.14.5",
+		"babel-jest": "^29.3.1",
+		"eslint": "^8.30.0",
+		"jest": "29.0.3",
+		"jest-environment-jsdom": "^29.0.3",
+		"pre-commit": "^1.2.2",
+		"prettier": "^2.8.1",
+		"ts-jest": "29.0.3"
+	}
 }

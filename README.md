@@ -5,13 +5,13 @@
 ## Project Dependencies
 
 - **App** - React 18.2.0 + Typescript
-  - [React docs](https://reactjs.org/)
-  - [Typescript docs](https://www.typescriptlang.org/)
+	- [React docs](https://reactjs.org/)
+	- [Typescript docs](https://www.typescriptlang.org/)
 - **Styles** - Sass
-  - [Sass docs](https://sass-lang.com/)
+	- [Sass docs](https://sass-lang.com/)
 - **Tests** - Jest + Testing-Library
-  - [Jest docs](https://jestjs.io/)
-  - [TestingLibrary docs](https://testing-library.com/)
+	- [Jest docs](https://jestjs.io/)
+	- [TestingLibrary docs](https://testing-library.com/)
 
 ## Available Scripts
 

@@ -1,11 +1,15 @@
 {
-  "testMatch": ["<rootDir>/__tests__/**/*.(spec|test).(ts|js)?(x)"],
-  "testEnvironment": "jsdom",
-  "transform": {
-    "^.+\\.tsx?$": "ts-jest"
-  },
-  "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"],
-  "moduleNameMapper": {
-    "^.+\\.module\\.(css|sass|scss)$": "babel-jest"
-  }
+	"testMatch": [
+		"<rootDir>/__tests__/**/*.(spec|test).(ts|js)?(x)"
+	],
+	"testEnvironment": "jsdom",
+	"transform": {
+		"^.+\\.tsx?$": "ts-jest"
+	},
+	"setupFilesAfterEnv": [
+		"@testing-library/jest-dom/extend-expect"
+	],
+	"moduleNameMapper": {
+		"^.+\\.module\\.(css|sass|scss)$": "babel-jest"
+	}
 }

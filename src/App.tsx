@@ -1,23 +1,15 @@
 import React from 'react';
+import { Provider } from "react-redux";
+import { proteinStore } from './store/store';
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
   return (
-    <div className="App" data-testid="AppComponent">
-      <header className="App-header">
-        <img className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={proteinStore}>
+      <div className="app" data-testid="AppComponent">
+        <HomePage />
+      </div>
+    </Provider>
   );
 }
 

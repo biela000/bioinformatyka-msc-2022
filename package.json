@@ -22,8 +22,8 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "format": "prettier --write {src,tests}/**/*.{js,tsx,ts,html,scss}",
-    "check": "eslint {src,tests}/**/*.{js,tsx,ts}"
+    "format": "prettier --config .prettierrc --write {src,__tests__}/**/*.{js,tsx,ts,html,scss} --no-error-on-unmatched-pattern",
+    "check": "eslint {src,__tests__}/**/*.{js,tsx,ts} --no-error-on-unmatched-pattern"
   },
   "pre-commit": [
     "format",
@@ -52,6 +52,7 @@
     "@testing-library/react": "^13.4.0",
     "@types/jest": "29.0.3",
     "@types/testing-library__jest-dom": "^5.14.5",
+    "babel-jest": "^29.3.1",
     "eslint": "^8.30.0",
     "jest": "29.0.3",
     "jest-environment-jsdom": "^29.0.3",

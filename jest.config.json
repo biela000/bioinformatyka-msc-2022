@@ -4,5 +4,8 @@
   "transform": {
     "^.+\\.tsx?$": "ts-jest"
   },
-  "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"]
+  "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"],
+  "moduleNameMapper": {
+    "^.+\\.module\\.(css|sass|scss)$": "babel-jest"
+  }
 }

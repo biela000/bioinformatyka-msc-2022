@@ -11,7 +11,7 @@ const RNA_REGEX = /^[AUGCT]*$/i;
 function HomePage() {
 	const dispatch = useAppDispatch();
 	const possibleProteins = useAppSelector(
-		state => state.protein.possibleProteins,
+		state => state.protein.translatedAminoAcids,
 	);
 	// STATE DEFINITIONS
 	const [showInput, setShowInput] = useState(false);

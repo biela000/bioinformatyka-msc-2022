@@ -1,4 +1,4 @@
-import { AminoAcid } from '../types/proteinTypes';
+import { AminoAcid } from "../types/proteinTypes";
 
 export const AminoAcidMap: { [key: string]: string } = {
 	UUU: 'F',

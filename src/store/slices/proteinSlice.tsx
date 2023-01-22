@@ -15,16 +15,14 @@ const splitProteins = (rna: string): [string[], string[], string[]] => {
 	}
 	return result;
 };
-const translateProteins = (splitProteins: string[]) : Codon[] => {
-	return splitProteins.map(
-		codon => {
-			return {
-				threeLetterCode: codon,
-				aminoAcidLetter: AminoAcidMap[codon],
-			};
-		},
-	);
-}
+const translateProteins = (splitProteins: string[]): Codon[] => {
+	return splitProteins.map(codon => {
+		return {
+			threeLetterCode: codon,
+			aminoAcidLetter: AminoAcidMap[codon],
+		};
+	});
+};
 
 type ProteinState = {
 	possibleProteins?: [Codon[], Codon[], Codon[]];
@@ -45,7 +43,9 @@ export const proteinSlice = createSlice({
 			const possibileProteinsStrings = splitProteins(rna);
 			state.possibleProteins = [[], [], []];
 			for (let i = 0; i < possibileProteinsStrings.length; i++) {
-				state.possibleProteins[i] = translateProteins(possibileProteinsStrings[i]);
+				state.possibleProteins[i] = translateProteins(
+					possibileProteinsStrings[i],
+				);
 			}
 		},
 		deleteProtein: (state, action) => {

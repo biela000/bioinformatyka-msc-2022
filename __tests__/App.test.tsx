@@ -25,7 +25,7 @@ describe('App component', () => {
 		userEvent.click(screen.getByTestId('goButton'));
 		// Enter a valid RNA sequence
 		userEvent.type(screen.getByTestId('RNAInput'), 'AUGCTaugct');
-		expect(screen.getByTestId('RNAInput')).toHaveValue('AUGCTAUGCT');
+		expect(screen.getByTestId('RNAInput')).toHaveValue('AUGCTaugct');
 		// Enter an invalid RNA sequence
 		userEvent.clear(screen.getByTestId('RNAInput'));
 		userEvent.type(

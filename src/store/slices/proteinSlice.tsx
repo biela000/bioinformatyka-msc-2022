@@ -18,7 +18,7 @@ export const proteinSlice = createSlice({
 	reducers: {
 		addProtein: (state, action) => {
 			// Replace T with U to make RNA out of DNA
-			const rna = action.payload.replace(/T/g, 'U');
+			const rna = action.payload.toUpperCase().replace(/T/g, 'U');
 
 			// state.translatedAminoAcids = array of arrays of amino acids
 			state.translatedAminoAcids = translate(rna);

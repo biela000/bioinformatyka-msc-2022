@@ -1,0 +1,10 @@
+.protein-list {
+	height: 24em;
+	overflow: auto;
+	width: 30%;
+
+	.protein-container {
+		height: 2em;
+		overflow-x: auto;
+	}
+}

@@ -1,0 +1,9 @@
+.result-links {
+	display: flex;
+	width: 5em;
+	justify-content: space-around;
+
+	.active-link {
+		color: green;
+	}
+}

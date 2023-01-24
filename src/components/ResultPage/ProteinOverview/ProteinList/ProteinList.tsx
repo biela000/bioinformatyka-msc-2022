@@ -6,11 +6,11 @@ interface Props {
 }
 
 function ProteinList(props: Props) {
-	const proteinElements = props.proteins.map((protein, index) => {
+	const proteinElements = props.proteins?.map((protein, index) => {
 		return <div key={index} className={classes['protein-container']}>{protein}</div>
 	});
 	return (
-		<div className={classes['protein-list']}>
+		<div className={classes['protein-list']} data-testid="ProteinListComponent">
 			{proteinElements}
 		</div>
 	);

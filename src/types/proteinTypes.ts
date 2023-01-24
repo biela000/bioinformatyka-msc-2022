@@ -1,8 +1,6 @@
 export type Codon = {
 	threeLetterCode: string;
 	aminoAcidLetter: string;
-	isStart?: boolean;
-	isStop?: boolean;
 };
 
 export type AminoAcid = {

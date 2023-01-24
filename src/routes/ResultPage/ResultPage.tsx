@@ -12,12 +12,12 @@ function ResultPage() {
 
 	console.log(rnaData);
 	return (
-		<div>
+		<div data-testid="ResultPageComponent">
 			<ProteinOverview />
-			<div className={classes['result-links']}>
-				<NavLink to="/result/1" className={handleActiveLinkClass}>1</NavLink>
-				<NavLink to="/result/2" className={handleActiveLinkClass}>2</NavLink>
-				<NavLink to="/result/3" className={handleActiveLinkClass}>3</NavLink>
+			<div className={classes['result-links']} data-testid="ShiftPageLinkContainer">
+				<NavLink to="/result/1" className={handleActiveLinkClass} data-testid="ShiftPageLink1">1</NavLink>
+				<NavLink to="/result/2" className={handleActiveLinkClass} data-testid="ShiftPageLink2">2</NavLink>
+				<NavLink to="/result/3" className={handleActiveLinkClass} data-testid="ShiftPageLink3">3</NavLink>
 			</div>
 		</div>
 	);

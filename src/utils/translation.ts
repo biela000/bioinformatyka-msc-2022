@@ -1,5 +1,5 @@
-import { Codon } from "../types/proteinTypes";
-import { AminoAcidMap } from "./aminoAcids";
+import { Codon } from '../types/proteinTypes';
+import { AminoAcidMap } from './aminoAcids';
 
 // Regex for finding proteins in a string
 // Matches every substring starting with AUG and ending with UAA, UAG or UGA
@@ -23,21 +23,35 @@ export const translate = (rna: string): [Codon[], Codon[], Codon[]] => {
 	return result;
 };
 
-export const findProteins = (aminoAcids: Codon[]): {proteins: Codon[][], formattedAminoAcidString: string, formattedAminoAcidLetterString: string} => {
+export const findProteins = (
+	aminoAcids: Codon[],
+): {
+	proteins: Codon[][];
+	formattedAminoAcidString: string;
+	formattedAminoAcidLetterString: string;
+} => {
 	// Combination of three-letter codes representing amino acids in a string separated by spaces
-	const aminoAcidString = aminoAcids.map(codon => codon.threeLetterCode).join(' ');
+	const aminoAcidString = aminoAcids
+		.map(codon => codon.threeLetterCode)
+		.join(' ');
 	// Replace all proteins in the string with a span with a green background
 	// Span properties need to be separated by some other character than space to avoid them being joined later with regex
-	const formattedAminoAcidString = aminoAcidString.replace(PROTEIN_REGEX, (el => {
-		return `<span
+	const formattedAminoAcidString = aminoAcidString.replace(
+		PROTEIN_REGEX,
+		el => {
+			return `<span
 					class="green"
 				>
 					${el}
 				</span>`;
-	}));
+		},
+	);
 	// Combination of single-letter codes representing amino acids in a string
 	// To extract the single-letter codes, replace all three-letter codes with their corresponding single-letter codes using regex
-	const formattedAminoAcidLetterString = formattedAminoAcidString.replace(/[AUGC]{3}/g, codon => AminoAcidMap[codon]);
+	const formattedAminoAcidLetterString = formattedAminoAcidString.replace(
+		/[AUGC]{3}/g,
+		codon => AminoAcidMap[codon],
+	);
 	// Find all proteins in the string
 	const foundProteinMatches = aminoAcidString.match(PROTEIN_REGEX) ?? [];
 	// Map each protein to an array of objects representing each codon
@@ -45,13 +59,13 @@ export const findProteins = (aminoAcids: Codon[]): {proteins: Codon[][], formatt
 		return match.split(' ').map(codon => {
 			return {
 				threeLetterCode: codon,
-				aminoAcidLetter: AminoAcidMap[codon]
+				aminoAcidLetter: AminoAcidMap[codon],
 			};
 		});
 	});
 	return {
 		proteins,
 		formattedAminoAcidString,
-		formattedAminoAcidLetterString
-	}
+		formattedAminoAcidLetterString,
+	};
 };

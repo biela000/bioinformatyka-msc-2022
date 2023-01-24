@@ -2,13 +2,17 @@ import React from "react";
 import classes from "./ProteinsInCode.module.scss";
 
 interface Props {
-	aminoAcidElements: JSX.Element[];
+	aminoAcidString: string;
+	aminoAcidLetterString: string;
 }
 
 function ProteinsInCode(props: Props) {
 	return (
-		<div className={classes['amino-acids-container']}>
-			{props.aminoAcidElements}
+		<div
+			className={classes['amino-acids-container']}
+			dangerouslySetInnerHTML={{__html:props.aminoAcidLetterString}}
+			data-testid="ProteinsInCodeComponent"
+		>
 		</div>
 	);
 }

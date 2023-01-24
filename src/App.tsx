@@ -4,6 +4,7 @@ import { proteinStore } from './store/store';
 import HomePage from './routes/HomePage/HomePage';
 import ResultPage from './routes/ResultPage/ResultPage';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import './App.scss';
 
 const router = createBrowserRouter(
 	[

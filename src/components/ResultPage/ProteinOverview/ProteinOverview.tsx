@@ -1,9 +1,9 @@
-import React from "react";
-import ProteinsInCode from "./ProteinsInCode/ProteinsInCode";
-import ProteinList from "./ProteinList/ProteinList";
-import { useAppSelector } from "../../../store/storeHooks";
-import { useParams } from "react-router-dom";
-import classes from "./ProteinOverview.module.scss";
+import React from 'react';
+import ProteinsInCode from './ProteinsInCode/ProteinsInCode';
+import ProteinList from './ProteinList/ProteinList';
+import { useAppSelector } from '../../../store/storeHooks';
+import { useParams } from 'react-router-dom';
+import classes from './ProteinOverview.module.scss';
 
 function ProteinOverview() {
 	const rnaData = useAppSelector(state => state.protein);
@@ -19,11 +19,13 @@ function ProteinOverview() {
 			<h3>Proteins found: {proteinStrings?.length}</h3>
 			<ProteinsInCode
 				aminoAcidString={rnaData.formattedAminoAcidString[resultIndex]}
-				aminoAcidLetterString={rnaData.formattedAminoAcidLetterString[resultIndex]}
+				aminoAcidLetterString={
+					rnaData.formattedAminoAcidLetterString[resultIndex]
+				}
 			/>
 			<ProteinList proteins={proteinStrings} />
 		</div>
-	)
+	);
 }
 
 export default ProteinOverview;

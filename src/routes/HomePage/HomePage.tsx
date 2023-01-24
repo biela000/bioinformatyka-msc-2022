@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { addProtein } from '../../store/slices/proteinSlice';
 import classes from './HomePage.module.scss';
-import RNAInput from './RNAInput/RNAInput';
-import Button from '../UI/Button/Button';
+import RNAInput from '../../components/HomePage/RNAInput/RNAInput';
+import Button from '../../components/UI/Button/Button';
 import { useAppDispatch, useAppSelector } from '../../store/storeHooks';
-import PossibleProteinDisplay from './PossibleProteinDisplay/PossibleProteinDisplay';
+import PossibleProteinDisplay from '../../components/HomePage/PossibleProteinDisplay/PossibleProteinDisplay';
+import { useNavigate } from "react-router-dom";
 
 const RNA_REGEX = /^[AUGCT]*$/i;
 
 function HomePage() {
+	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const possibleProteins = useAppSelector(
 		state => state.protein.translatedAminoAcids,
@@ -26,7 +28,7 @@ function HomePage() {
 		// Check if given input only consists of
 		// letters present in a normal RNA / DNA code
 		if (RNA_REGEX.test(rna)) {
-			setRna(rna.toUpperCase());
+			setRna(rna);
 		}
 	};
 
@@ -34,6 +36,7 @@ function HomePage() {
 		if (rna) {
 			// TODO: Check if RNA is valid (i think it has to have length of 3n)
 			dispatch(addProtein(rna));
+			navigate('/result/1');
 		} else {
 			// TODO: Show error message
 		}
@@ -60,7 +63,8 @@ function HomePage() {
 			{possibleProteins &&
 				possibleProteins.map((protein, i) => {
 					return <PossibleProteinDisplay protein={protein} key={i} />;
-				})}
+				})
+			}
 		</div>
 	);
 }

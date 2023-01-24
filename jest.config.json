@@ -10,6 +10,7 @@
 		"@testing-library/jest-dom/extend-expect"
 	],
 	"moduleNameMapper": {
-		"^.+\\.module\\.(css|sass|scss)$": "babel-jest"
+		"^.+\\.module\\.(css|sass|scss)$": "babel-jest",
+		"^.+\\.(css|sass|scss)$": "babel-jest"
 	}
 }

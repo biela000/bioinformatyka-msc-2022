@@ -1,5 +1,10 @@
-import { Codon } from "../types/proteinTypes";
-import { AminoAcidMap } from "./aminoAcids";
+import { Codon } from '../types/proteinTypes';
+import { AminoAcidMap } from './aminoAcids';
+
+// Regex for finding proteins in a string
+// Matches every substring starting with AUG and ending with UAA, UAG or UGA
+// (not containing any of these stop codons between start and end)
+const PROTEIN_REGEX = /AUG(?:(?!UAA|UAG|UGA).)*(?:UAA|UAG|UGA)/g;
 
 export const translate = (rna: string): [Codon[], Codon[], Codon[]] => {
 	const result: [Codon[], Codon[], Codon[]] = [[], [], []];
@@ -18,29 +23,49 @@ export const translate = (rna: string): [Codon[], Codon[], Codon[]] => {
 	return result;
 };
 
-export const findProteins = (aminoAcids: Codon[]): Codon[][] => {
-	const result: Codon[][] = [];
-	let aminoAcidsCpy = [...aminoAcids];
-	for (
-		// Protein starts with the earliest occurrence of M (start)
-		let startIndex = aminoAcidsCpy.findIndex(codon => codon.aminoAcidLetter === 'M');
-		// If there is no M, there is no protein
-		startIndex !== -1;
-		// Find the next M
-		startIndex = aminoAcidsCpy.findIndex(codon => codon.aminoAcidLetter === "M")
-	) {
-		// Find stop only in the remaining part of the RNA after the start
-		aminoAcidsCpy = aminoAcidsCpy.slice(startIndex);
-		const stopIndex = aminoAcidsCpy.findIndex(codon => codon.aminoAcidLetter === "STOP");
-		// Protein must have a stop
-		if (stopIndex === -1) {
-			break;
-		}
-		// 0 is now the index of M
-		const protein = aminoAcidsCpy.slice(0, stopIndex);
-		result.push(protein);
-		// Remove the protein from the array
-		aminoAcidsCpy = aminoAcidsCpy.slice(stopIndex + 1);
-	}
-	return result;
-}
+export const findProteins = (
+	aminoAcids: Codon[],
+): {
+	proteins: Codon[][];
+	formattedAminoAcidString: string;
+	formattedAminoAcidLetterString: string;
+} => {
+	// Combination of three-letter codes representing amino acids in a string separated by spaces
+	const aminoAcidString = aminoAcids
+		.map(codon => codon.threeLetterCode)
+		.join(' ');
+	// Replace all proteins in the string with a span with a green background
+	// Span properties need to be separated by some other character than space to avoid them being joined later with regex
+	const formattedAminoAcidString = aminoAcidString.replace(
+		PROTEIN_REGEX,
+		el => {
+			return `<span
+					class="green"
+				>
+					${el}
+				</span>`;
+		},
+	);
+	// Combination of single-letter codes representing amino acids in a string
+	// To extract the single-letter codes, replace all three-letter codes with their corresponding single-letter codes using regex
+	const formattedAminoAcidLetterString = formattedAminoAcidString.replace(
+		/[AUGC]{3}/g,
+		codon => AminoAcidMap[codon],
+	);
+	// Find all proteins in the string
+	const foundProteinMatches = aminoAcidString.match(PROTEIN_REGEX) ?? [];
+	// Map each protein to an array of objects representing each codon
+	const proteins = foundProteinMatches.map(match => {
+		return match.split(' ').map(codon => {
+			return {
+				threeLetterCode: codon,
+				aminoAcidLetter: AminoAcidMap[codon],
+			};
+		});
+	});
+	return {
+		proteins,
+		formattedAminoAcidString,
+		formattedAminoAcidLetterString,
+	};
+};

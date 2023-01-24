@@ -11,8 +11,7 @@ interface RNAInputProps {
 function RNAInput({ onInput, value, onSubmit }: RNAInputProps) {
 	return (
 		<React.Fragment>
-			<input
-				type="text"
+			<textarea
 				className={classes.input}
 				onChange={e => onInput(e.target.value)}
 				value={value}

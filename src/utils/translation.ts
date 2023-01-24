@@ -1,5 +1,5 @@
 import { Codon } from '../types/proteinTypes';
-import { CodonToAminoAcid } from './aminoAcidCodes';
+import { CodonToAminoAcid } from './aminoAcids';
 
 // Regex for finding proteins in a string
 // Matches every substring starting with AUG and ending with UAA, UAG or UGA

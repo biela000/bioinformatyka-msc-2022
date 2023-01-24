@@ -67,7 +67,7 @@ export const CodonToAminoAcid: { [key: string]: string } = {
 	GGG: 'G',
 };
 
-export const AminoAcidCodes: Map<string, AminoAcid> = new Map([
+export const AminoAcids: Map<string, AminoAcid> = new Map([
 	['A', { letter: 'A', name: 'Alanine' }],
 	['C', { letter: 'C', name: 'Cysteine' }],
 	['D', { letter: 'D', name: 'Aspartic Acid' }],

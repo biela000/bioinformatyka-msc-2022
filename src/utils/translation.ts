@@ -1,5 +1,5 @@
 import { Codon } from '../types/proteinTypes';
-import { AminoAcidMap } from './aminoAcids';
+import { CodonToAminoAcid } from './aminoAcidCodes';
 
 // Regex for finding proteins in a string
 // Matches every substring starting with AUG and ending with UAA, UAG or UGA
@@ -16,7 +16,7 @@ export const translate = (rna: string): [Codon[], Codon[], Codon[]] => {
 			// Replace each codon with a corresponding object
 			result[i].push({
 				threeLetterCode: codon,
-				aminoAcidLetter: AminoAcidMap[codon],
+				aminoAcidLetter: CodonToAminoAcid[codon],
 			});
 		}
 	}
@@ -50,7 +50,7 @@ export const findProteins = (
 	// To extract the single-letter codes, replace all three-letter codes with their corresponding single-letter codes using regex
 	const formattedAminoAcidLetterString = formattedAminoAcidString.replace(
 		/[AUGC]{3}/g,
-		codon => AminoAcidMap[codon],
+		codon => CodonToAminoAcid[codon],
 	);
 	// Find all proteins in the string
 	const foundProteinMatches = aminoAcidString.match(PROTEIN_REGEX) ?? [];
@@ -59,7 +59,7 @@ export const findProteins = (
 		return match.split(' ').map(codon => {
 			return {
 				threeLetterCode: codon,
-				aminoAcidLetter: AminoAcidMap[codon],
+				aminoAcidLetter: CodonToAminoAcid[codon],
 			};
 		});
 	});

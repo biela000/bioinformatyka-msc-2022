@@ -5,11 +5,15 @@ import { translate, findProteins } from "../../utils/translation";
 type ProteinState = {
 	translatedAminoAcids: [Codon[], Codon[], Codon[]];
 	proteins: [Codon[][], Codon[][], Codon[][]];
+	formattedAminoAcidString: [string, string, string];
+	formattedAminoAcidLetterString: [string, string, string]
 };
 
 const initialState: ProteinState = {
 	translatedAminoAcids: [[], [], []],
 	proteins: [[], [], []],
+	formattedAminoAcidString: ['', '', ''],
+	formattedAminoAcidLetterString: ['', '', '']
 };
 
 export const proteinSlice = createSlice({
@@ -25,7 +29,10 @@ export const proteinSlice = createSlice({
 
 			// state.proteins = array of arrays of proteins, protein = Codon[]
 			for (let i = 0; i < state.translatedAminoAcids.length; i++) {
-				state.proteins[i] = findProteins(state.translatedAminoAcids[i]);
+				const findProteinsResult = findProteins(state.translatedAminoAcids[i]);
+				state.proteins[i] = findProteinsResult.proteins;
+				state.formattedAminoAcidString[i] = findProteinsResult.formattedAminoAcidString.replace(/ /g, '');
+				state.formattedAminoAcidLetterString[i] = findProteinsResult.formattedAminoAcidLetterString.replace(/ /g, '');
 			}
 		},
 		deleteProtein: (state, action) => {

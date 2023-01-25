@@ -5,6 +5,7 @@ import HomePage from './routes/HomePage/HomePage';
 import ResultPage from './routes/ResultPage/ResultPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.scss';
+import Canvas from "./components/Canvas/Canvas";
 
 const router = createBrowserRouter([
 	{
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
 		path: '/result/:id',
 		element: <ResultPage />,
 	},
+	{
+		path: '/DEBUG/canvas',
+		element: <Canvas />,
+	}
 ]);
 
 function App() {

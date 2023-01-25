@@ -34,4 +34,13 @@ describe('Button component', () => {
 		expect(screen.getByTestId(testID).classList.contains(className))
 			.toBe(true)
 	})
+
+	it("should render with disabled property", ()=>{
+		//With
+		const disabled = true
+		//When
+		render(<Button dataTestId={testID} disabled={disabled} />)
+
+		expect(screen.getByTestId(testID)).toBeDisabled();
+	})
 });

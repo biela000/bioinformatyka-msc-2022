@@ -6,14 +6,16 @@ interface ButtonProps {
 	children?: React.ReactNode;
 	className?: string;
 	dataTestId?: string;
+	disabled?: boolean;
 }
 
-function Button({ onClick, children, className, dataTestId }: ButtonProps) {
+function Button({ onClick, children, className, dataTestId, disabled }: ButtonProps) {
 	return (
 		<button
 			className={`${classes.button} ${className}`}
 			data-testid={dataTestId}
 			onClick={onClick}
+			disabled={disabled}
 		>
 			{children}
 		</button>

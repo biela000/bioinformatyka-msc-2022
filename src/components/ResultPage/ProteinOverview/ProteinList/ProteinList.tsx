@@ -9,7 +9,7 @@ function ProteinList(props: Props) {
 	const proteinElements = props.proteins?.map((protein, index) => {
 		return (
 			<div key={index} className={classes['protein-container']}>
-				{protein}
+				{protein.slice(0, protein.length - 4)}
 			</div>
 		);
 	});

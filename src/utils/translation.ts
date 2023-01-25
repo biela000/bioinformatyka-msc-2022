@@ -36,14 +36,15 @@ export const findProteins = (
 		.join(' ');
 	// Replace all proteins in the string with a span with a green background
 	// Span properties need to be separated by some other character than space to avoid them being joined later with regex
+	// Elements are sliced so STOP is not part of the green highlight
 	const formattedAminoAcidString = aminoAcidString.replace(
 		PROTEIN_REGEX,
 		el => {
 			return `<span
 					class="green"
 				>
-					${el}
-				</span>`;
+					${el.slice(0, el.length - 3)}
+				</span>${el.slice(el.length - 3)}`;
 		},
 	);
 	// Combination of single-letter codes representing amino acids in a string

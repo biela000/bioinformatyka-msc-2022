@@ -1,5 +1,5 @@
-import React from "react";
-import classes from "./ProteinsInCode.module.scss";
+import React from 'react';
+import classes from './ProteinsInCode.module.scss';
 
 interface Props {
 	aminoAcidString: string;
@@ -10,10 +10,9 @@ function ProteinsInCode(props: Props) {
 	return (
 		<div
 			className={classes['amino-acids-container']}
-			dangerouslySetInnerHTML={{__html:props.aminoAcidLetterString}}
+			dangerouslySetInnerHTML={{ __html: props.aminoAcidLetterString }}
 			data-testid="ProteinsInCodeComponent"
-		>
-		</div>
+		></div>
 	);
 }
 

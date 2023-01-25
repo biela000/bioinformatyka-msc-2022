@@ -1,6 +1,6 @@
 import { AminoAcid } from '../types/proteinTypes';
 
-export const AminoAcidMap: { [key: string]: string } = {
+export const CodonToAminoAcid: { [key: string]: string } = {
 	UUU: 'F',
 	UUC: 'F',
 	UUA: 'L',

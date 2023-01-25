@@ -1,5 +1,5 @@
-import React from "react";
-import classes from "./ProteinList.module.scss";
+import React from 'react';
+import classes from './ProteinList.module.scss';
 
 interface Props {
 	proteins: string[];
@@ -7,10 +7,17 @@ interface Props {
 
 function ProteinList(props: Props) {
 	const proteinElements = props.proteins?.map((protein, index) => {
-		return <div key={index} className={classes['protein-container']}>{protein}</div>
+		return (
+			<div key={index} className={classes['protein-container']}>
+				{protein}
+			</div>
+		);
 	});
 	return (
-		<div className={classes['protein-list']} data-testid="ProteinListComponent">
+		<div
+			className={classes['protein-list']}
+			data-testid="ProteinListComponent"
+		>
 			{proteinElements}
 		</div>
 	);

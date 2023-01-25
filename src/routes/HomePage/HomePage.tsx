@@ -4,8 +4,7 @@ import classes from './HomePage.module.scss';
 import RNAInput from '../../components/HomePage/RNAInput/RNAInput';
 import Button from '../../components/UI/Button/Button';
 import { useAppDispatch, useAppSelector } from '../../store/storeHooks';
-import PossibleProteinDisplay from '../../components/HomePage/PossibleProteinDisplay/PossibleProteinDisplay';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const RNA_REGEX = /^[AUGCT]*$/i;
 
@@ -60,11 +59,6 @@ function HomePage() {
 					onSubmit={handleRnaSubmit}
 				/>
 			)}
-			{possibleProteins &&
-				possibleProteins.map((protein, i) => {
-					return <PossibleProteinDisplay protein={protein} key={i} />;
-				})
-			}
 		</div>
 	);
 }

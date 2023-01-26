@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import classes from './HomePage.module.scss';
 import RNAInput from '../../components/HomePage/RNAInput/RNAInput';
 import Button from '../../components/UI/Button/Button';

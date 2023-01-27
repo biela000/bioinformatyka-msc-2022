@@ -9,7 +9,8 @@ function Canvas() {
 		const context = canvas.getContext("2d")!;
 		resetCanvas(context);
 
-		const acidString = "AACCGG";
+		// const acidString = "AACCGG";
+		const acidString = "ACDGILSUV";
 		drawPeptide(context, acidString);
 
 		// drawNH3(context, 100, 100);
@@ -32,7 +33,7 @@ function Canvas() {
 				}}
 				id="canvas"
 				width="1900"
-				height="500"
+				height="700"
 			></canvas>
 		</div>
 	);
@@ -46,9 +47,10 @@ const resetCanvas = (ctx: CanvasRenderingContext2D) => {
 };
 
 const drawPeptide = (ctx: CanvasRenderingContext2D, acidString: string) => {
-	let x = 100, y = 230;
+	let x = 100, y = 320;
 	drawNH3(ctx, x, y);
 	let inverted = false;
+	y += !inverted ? 10 : -30; // Create a margin-bottom for NH3 if !inverted, margin-top if inverted
 	for (let i = 0; i < acidString.length; i++) {
 		let peptideX = 0, peptideY = 0;
 		[x, y, peptideX, peptideY] = drawBase(ctx, x, y, inverted);

@@ -16,15 +16,14 @@ export default function FileInput({
 	onInput,
 	multiple,
 }: FileInputProps) {
-	const form = useRef(null);
-	console.log(acceptedExtensions.join(','));
+
 	return (
 		<input
 			type="file"
 			multiple={multiple}
 			onInput={e => {
 				const input = e.target as HTMLInputElement;
-				let fileList = input.files as FileList;
+				const fileList = input.files as FileList;
 				for (let i = 0; i < fileList.length; i++) {
 					if (
 						acceptedExtensions.some(
@@ -35,7 +34,6 @@ export default function FileInput({
 								),
 						)
 					) {
-						console.log('clear attempt');
 						input.type = 'text';
 						input.type = 'file';
 						return;

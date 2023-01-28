@@ -85,6 +85,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			letter: 'A',
 			name: 'Alanine',
 			code: 'ala',
+			mass: 89.094,
 			draw: drawAminoAcid.drawAla,
 		},
 	],
@@ -94,6 +95,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			letter: 'C',
 			name: 'Cysteine',
 			code: 'cys',
+			mass: 121.154,
 			draw: drawAminoAcid.drawCys,
 		},
 	],
@@ -103,16 +105,18 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			letter: 'D',
 			name: 'Aspartic Acid',
 			code: 'asp',
+			mass: 133.104,
 			draw: drawAminoAcid.drawAsp,
 		},
 	],
-	['E', { letter: 'E', name: 'Glutamic Acid', code: 'glu' }],
-	['F', { letter: 'F', name: 'Phenylalanine', code: 'phe' }],
+	['E', { letter: 'E', name: 'Glutamic Acid',mass: 147.131, code: 'glu' }],
+	['F', { letter: 'F', name: 'Phenylalanine', mass: 165.192 ,  code: 'phe' }],
 	[
 		'G',
 		{
 			letter: 'G',
 			name: 'Glycine',
+			mass: 75.067,
 			code: 'gly',
 			draw: drawAminoAcid.drawGlu,
 		},
@@ -122,6 +126,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		{
 			letter: 'H',
 			name: 'Histidine',
+			mass: 155.156,
 			code: 'his',
 			draw: drawAminoAcid.drawHis,
 		},
@@ -131,6 +136,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		{
 			letter: 'I',
 			name: 'Isoleucine',
+			mass: 131.175,
 			code: 'ile',
 			draw: drawAminoAcid.drawIle,
 		},
@@ -140,6 +146,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		{
 			letter: 'K',
 			name: 'Lysine',
+			mass: 146.189,
 			code: 'lys',
 			draw: drawAminoAcid.drawLys,
 		},
@@ -150,6 +157,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			//TODO: shape for discussion
 			letter: 'L',
 			name: 'Leucine',
+			mass: 131.175,
 			code: 'leu',
 			draw: drawAminoAcid.drawLeu,
 		},
@@ -159,6 +167,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		{
 			letter: 'M',
 			name: 'Methionine',
+			mass: 149.208,
 			code: 'met',
 			draw: drawAminoAcid.drawMet,
 		},
@@ -168,6 +177,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		{
 			letter: 'N',
 			name: 'Asparagine',
+			mass: 132.119,
 			code: 'asn',
 			draw: drawAminoAcid.drawAsn,
 		},
@@ -177,6 +187,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		{
 			letter: 'P',
 			name: 'Proline',
+			mass: 115.132,
 			code: 'pro',
 			draw: drawAminoAcid.drawPro,
 		},
@@ -186,6 +197,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		{
 			letter: 'Q',
 			name: 'Glutamine',
+			mass: 146.146,
 			code: 'gln',
 			draw: drawAminoAcid.drawGln,
 		},
@@ -195,6 +207,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		{
 			letter: 'R',
 			name: 'Arginine',
+			mass: 174.203,
 			code: 'arg',
 			draw: drawAminoAcid.drawArg,
 		},
@@ -204,6 +217,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		{
 			letter: 'S',
 			name: 'Serine',
+			mass: 105.093,
 			code: 'ser',
 			draw: drawAminoAcid.drawSer,
 		},
@@ -213,6 +227,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		{
 			letter: 'T',
 			name: 'Threonine',
+			mass: 119.119,
 			code: 'thr',
 			draw: drawAminoAcid.drawThr,
 		},
@@ -223,6 +238,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			// Not on pepdraw
 			letter: 'U',
 			name: 'Selenocysteine',
+			mass: 168.05,
 			code: 'Sec',
 			draw: drawAminoAcid.drawSec,
 		},
@@ -232,6 +248,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		{
 			letter: 'V',
 			name: 'Valine',
+			mass: 117.148,
 			code: 'val',
 			draw: drawAminoAcid.drawVal,
 		},
@@ -241,6 +258,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		{
 			letter: 'W',
 			name: 'Tryptophan',
+			mass: 204.228 ,
 			code: 'trp',
 			draw: drawAminoAcid.drawTrp,
 		},
@@ -250,6 +268,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		{
 			letter: 'Y',
 			name: 'Tyrosine',
+			mass: 181.191,
 			code: 'tyr',
 			draw: drawAminoAcid.drawTyr,
 		},

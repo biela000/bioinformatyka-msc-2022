@@ -7,7 +7,7 @@ export type AminoAcid = {
 	letter: string;
 	name: string;
 	code?: string;
-
+	mass?:number;
 	// TODO: possibly add mass, charge, etc.
 
 	draw?: (

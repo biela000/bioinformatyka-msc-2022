@@ -112,8 +112,26 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			netCharge: -1,
 		},
 	],
-	['E', { letter: 'E', name: 'Glutamic Acid', mass: 147.131, code: 'glu', netCharge: -1 }],
-	['F', { letter: 'F', name: 'Phenylalanine', mass: 165.192 ,  code: 'phe', netCharge: 0 }],
+	[
+		'E',
+		{
+			letter: 'E',
+			name: 'Glutamic Acid',
+			mass: 147.131,
+			code: 'glu',
+			netCharge: -1,
+		},
+	],
+	[
+		'F',
+		{
+			letter: 'F',
+			name: 'Phenylalanine',
+			mass: 165.192,
+			code: 'phe',
+			netCharge: 0,
+		},
+	],
 	[
 		'G',
 		{
@@ -275,7 +293,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		{
 			letter: 'W',
 			name: 'Tryptophan',
-			mass: 204.228 ,
+			mass: 204.228,
 			code: 'trp',
 			draw: drawAminoAcid.drawTrp,
 			netCharge: 0,

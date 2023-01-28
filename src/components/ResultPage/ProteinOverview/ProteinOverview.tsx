@@ -10,20 +10,24 @@ function ProteinOverview() {
 	const { id } = useParams();
 	const resultIndex = parseInt(id!) - 1;
 
-	const proteinStrings = rnaData.proteins[resultIndex]?.map(protein => {
-		return protein.map(codon => codon.aminoAcidLetter).join('');
+	const proteins = rnaData.proteins[resultIndex]?.map(protein => {
+		return {
+			proteinString: protein.aminoAcidChain.map(codon => codon.aminoAcidLetter).join(''),
+			mass: protein.mass,
+			netCharge: protein.netCharge,
+		};
 	});
 
 	return (
 		<div data-testid="ProteinOverviewComponent">
-			<h3>Proteins found: {proteinStrings?.length}</h3>
+			<h3>Proteins found: {proteins?.length}</h3>
 			<ProteinsInCode
 				aminoAcidString={rnaData.formattedAminoAcidString[resultIndex]}
 				aminoAcidLetterString={
 					rnaData.formattedAminoAcidLetterString[resultIndex]
 				}
 			/>
-			<ProteinList proteins={proteinStrings} />
+			<ProteinList proteins={proteins} />
 		</div>
 	);
 }

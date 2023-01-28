@@ -9,7 +9,13 @@ interface ButtonProps {
 	disabled?: boolean;
 }
 
-function Button({ onClick, children, className, dataTestId, disabled }: ButtonProps) {
+function Button({
+	onClick,
+	children,
+	className,
+	dataTestId,
+	disabled,
+}: ButtonProps) {
 	return (
 		<button
 			className={`${classes.button} ${className}`}

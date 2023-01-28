@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import classes from './RNAInput.module.scss';
 import Button from '../../UI/Button/Button';
-import { addProtein } from "../../../store/slices/proteinSlice";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../../store/storeHooks";
+import { addProtein } from '../../../store/slices/proteinSlice';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../../store/storeHooks';
 
 const RNA_REGEX = /^[AUGCT\s]*$/i;
 
@@ -39,7 +39,9 @@ function RNAInput() {
 				data-testid="RNAInput"
 			/>
 			{!isRnaValid && <p>Invalid RNA</p>}
-			<Button onClick={handleRnaSubmit} disabled={!isRnaValid}>GO</Button>
+			<Button onClick={handleRnaSubmit} disabled={!isRnaValid}>
+				GO
+			</Button>
 		</React.Fragment>
 	);
 }

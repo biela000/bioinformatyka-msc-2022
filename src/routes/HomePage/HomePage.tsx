@@ -3,7 +3,6 @@ import classes from './HomePage.module.scss';
 import RNAInput from '../../components/HomePage/RNAInput/RNAInput';
 import Button from '../../components/UI/Button/Button';
 
-
 function HomePage() {
 	// STATE DEFINITIONS
 	const [showInput, setShowInput] = useState(false);
@@ -24,9 +23,7 @@ function HomePage() {
 					GO
 				</Button>
 			)}
-			{showInput && (
-				<RNAInput />
-			)}
+			{showInput && <RNAInput />}
 		</div>
 	);
 }

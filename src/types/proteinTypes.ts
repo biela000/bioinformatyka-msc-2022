@@ -6,7 +6,14 @@ export type Codon = {
 export type AminoAcid = {
 	letter: string;
 	name: string;
+	code?: string;
+
 	// TODO: possibly add mass, charge, etc.
 
-	draw?: (ctx: CanvasRenderingContext2D, x: number, y: number, inverted: boolean) => void;
+	draw?: (
+		ctx: CanvasRenderingContext2D,
+		x: number,
+		y: number,
+		inverted: boolean,
+	) => void;
 };

@@ -151,7 +151,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 		draw: (ctx: CanvasRenderingContext2D, x: number, y: number, inverted: boolean = false) => {
 			if (inverted) {
 				[x, y] = oneLine(ctx, x, y, x, y - distance);
-				[x, y] = oneLine(ctx, x, y, x + distance, y - distance * tan30);
+				[x, y] = oneLine(ctx, x, y, x + distance, y - distance);
 				oneLine(ctx, x, y, x + distance, y + distance * tan30);
 				oneLine(ctx, x, y, x + distance , y - distance * tan30);
 			} else {

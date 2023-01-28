@@ -4,10 +4,11 @@ export type Codon = {
 };
 
 export type AminoAcid = {
+	netCharge?: number;
 	letter: string;
 	name: string;
 	code?: string;
-	mass?:number;
+	mass?: number;
 	// TODO: possibly add mass, charge, etc.
 
 	draw?: (
@@ -16,4 +17,10 @@ export type AminoAcid = {
 		y: number,
 		inverted: boolean,
 	) => void;
+};
+
+export type Protein = {
+	aminoAcidChain: Codon[];
+	mass: number;
+	netCharge: number;
 };

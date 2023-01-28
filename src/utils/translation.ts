@@ -1,5 +1,6 @@
 import { Codon } from '../types/proteinTypes';
-import { CodonToAminoAcid } from './aminoAcids';
+import { AminoAcids, CodonToAminoAcid } from "./aminoAcids";
+import { Protein } from '../types/proteinTypes';
 
 // Regex for finding proteins in a string
 // Matches every substring starting with AUG and ending with UAA, UAG or UGA
@@ -26,7 +27,7 @@ export const translate = (rna: string): [Codon[], Codon[], Codon[]] => {
 export const findProteins = (
 	aminoAcids: Codon[],
 ): {
-	proteins: Codon[][];
+	proteins: Protein[];
 	formattedAminoAcidString: string;
 	formattedAminoAcidLetterString: string;
 } => {
@@ -57,12 +58,25 @@ export const findProteins = (
 	const foundProteinMatches = aminoAcidString.match(PROTEIN_REGEX) ?? [];
 	// Map each protein to an array of objects representing each codon
 	const proteins = foundProteinMatches.map(match => {
-		return match.split(' ').map(codon => {
+		// Add 36 to account for the molecule ending the protein sequence and codon STOP (which is not any amino acid, so it does not weight anything)
+		// (for better understanding look how structural forms are drawn)
+		let mass = 36.0212;
+		let netCharge = 0;
+		const aminoAcidChain: Codon[] = match.split(' ').map(codon => {
+			const aminoAcidLetter = CodonToAminoAcid[codon];
+			// Subtract 18 to account for the molecule that is released when the peptide bond is formed
+			mass += (AminoAcids.get(aminoAcidLetter)?.mass ?? 0) - 18.0106;
+			netCharge += AminoAcids.get(aminoAcidLetter)?.netCharge ?? 0;
 			return {
 				threeLetterCode: codon,
-				aminoAcidLetter: CodonToAminoAcid[codon],
+				aminoAcidLetter
 			};
 		});
+		return {
+			aminoAcidChain,
+			mass,
+			netCharge,
+		};
 	});
 	return {
 		proteins,

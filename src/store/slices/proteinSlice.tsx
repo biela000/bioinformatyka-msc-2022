@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Codon } from '../../types/proteinTypes';
 import { translate, findProteins } from '../../utils/translation';
+import { Protein } from '../../types/proteinTypes';
+
 
 type ProteinState = {
 	translatedAminoAcids: [Codon[], Codon[], Codon[]];
-	proteins: [Codon[][], Codon[][], Codon[][]];
+	proteins: [Protein[], Protein[], Protein[]];
 	formattedAminoAcidString: [string, string, string];
 	formattedAminoAcidLetterString: [string, string, string];
 };

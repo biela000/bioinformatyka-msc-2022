@@ -1,12 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import {
-	drawBase,
-	drawNH,
-	drawNH3,
-	drawOMinus,
-	text,
-} from '../../canvas/canvas';
-import { AminoAcids } from '../../utils/aminoAcids';
+import { drawPeptide } from "../../canvas/canvas";
 
 function Canvas() {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -45,6 +38,8 @@ const manageCanvas = (
 	const minZoom = 0.1;
 	const maxZoom = 5;
 
+	const mouse = {x: 0, y: 0};
+
 	function draw() {
 		canvas.width = width;
 		canvas.height = height;
@@ -58,6 +53,14 @@ const manageCanvas = (
 
 		resetCanvas(ctx);
 		drawPeptide(ctx, peptide);
+		// drawHoverPeptide(ctx, peptide, mouse.x, mouse.y);
+
+		// draw a red circle at the mouse position
+		ctx.beginPath();
+		ctx.arc(mouse.x, mouse.y, 20, 0, 2 * Math.PI);
+		ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+		ctx.fill();
+
 
 		requestAnimationFrame(draw);
 	}
@@ -78,6 +81,8 @@ const manageCanvas = (
 			cameraOffset.x = e.clientX / cameraZoom - panStart.x;
 			cameraOffset.y = e.clientY / cameraZoom - panStart.y;
 		}
+
+		getMousePosition(e);
 	}
 
 	function adjustZoom(delta: number) {
@@ -87,6 +92,13 @@ const manageCanvas = (
 		cameraZoom += delta;
 		if (cameraZoom < minZoom) cameraZoom = minZoom;
 		if (cameraZoom > maxZoom) cameraZoom = maxZoom;
+	}
+
+	function getMousePosition(e: MouseEvent) {
+		/// DON'T EVER EVEN DREAM OF TOUCHING THIS CODE
+		/// SWEAT AND BLOOD WENT INTO THIS AND I WILL NOT LET YOU RUIN IT
+		mouse.x = (e.clientX - canvas.offsetLeft - width / 2) / cameraZoom + width / 2 - cameraOffset.x;
+		mouse.y = (e.clientY - canvas.offsetTop - height / 2) / cameraZoom + height / 2 - cameraOffset.y;
 	}
 
 	canvas.addEventListener('mousedown', mouseDown);
@@ -106,29 +118,5 @@ const resetCanvas = (ctx: CanvasRenderingContext2D) => {
 	ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 };
 
-const drawPeptide = (ctx: CanvasRenderingContext2D, acidString: string) => {
-	let x = 100,
-		y = 320;
-	drawNH3(ctx, x, y);
-	let inverted = false;
-	y += !inverted ? 10 : -30; // Create a margin-bottom for NH3 if !inverted, margin-top if inverted
-	for (let i = 0; i < acidString.length; i++) {
-		let peptideX = 0,
-			peptideY = 0;
-		[x, y, peptideX, peptideY] = drawBase(ctx, x, y, inverted);
-
-		const aminoAcid = AminoAcids.get(acidString[i]);
-		if (aminoAcid && aminoAcid.draw) {
-			aminoAcid.draw(ctx, peptideX, peptideY, inverted);
-		}
-
-		if (i !== acidString.length - 1) {
-			drawNH(ctx, x, y, inverted);
-		} else {
-			drawOMinus(ctx, x, y);
-		}
-		inverted = !inverted;
-	}
-};
 
 export default Canvas;

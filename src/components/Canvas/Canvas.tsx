@@ -8,12 +8,16 @@ import {
 } from '../../canvas/canvas';
 import { AminoAcids } from '../../utils/aminoAcids';
 
-function Canvas() {
+interface CanvasProps {
+	peptide?: string;
+}
+
+function Canvas({ peptide }: CanvasProps) {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	useEffect(() => {
 		const canvas = canvasRef.current!;
-		manageCanvas(canvas, 1900, 700, 'ACDGILSUV');
-	}, []);
+		manageCanvas(canvas, 1900, 700, peptide ?? 'ACDGILSUV');
+	}, [peptide]);
 
 	return (
 		<div>

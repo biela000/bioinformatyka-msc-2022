@@ -19,21 +19,32 @@ const hoverFont = fontSize + 'px Arial';
 
 let strokedText = false;
 
-export const drawPeptide = (ctx: CanvasRenderingContext2D, acidString: string) => {
+type MousePosition = {
+	x: number;
+	y: number;
+}
+
+export const drawPeptide = (ctx: CanvasRenderingContext2D, acidString: string, mousePosition: MousePosition) => {
+	// starting point
 	let x = 100,
 		y = 320;
-
-	const hoverIndex = 8;
 
 	ctx.fillStyle = fillStyle;
 	ctx.strokeStyle = strokeStyle;
 	ctx.lineWidth = lineWidth;
 	ctx.font = font;
 
+	const baseWidth = distance * 3;
+
+	// calculate the hover index based on mouse x and baseWidth (distance * 3)
+	const hoverIndex = Math.floor((mousePosition.x - x) / baseWidth);
+
 	let inverted = false;
 	for (let i = 0; i < acidString.length; i++) {
 		if (i === 0) {
 			drawNH3(ctx, x, y);
+		} else {
+			drawNH(ctx, x, y, !inverted);
 		}
 		let [newX, newY, peptideX, peptideY] = drawBase(ctx, x, y, inverted);
 
@@ -54,6 +65,8 @@ export const drawPeptide = (ctx: CanvasRenderingContext2D, acidString: string) =
 			// @ts-ignore // using for now, when the hoverIndex is a constant
 			if (i === 0) {
 				drawNH3(ctx, x, y);
+			} else {
+				drawNH(ctx, x, y, !inverted);
 			}
 			[x, y, peptideX, peptideY] = drawBase(ctx, x, y, inverted);
 
@@ -66,9 +79,7 @@ export const drawPeptide = (ctx: CanvasRenderingContext2D, acidString: string) =
 			y = newY;
 		}
 
-		if (i !== acidString.length - 1) {
-			drawNH(ctx, x, y, inverted);
-		} else {
+		if (i === acidString.length - 1) {
 			drawOMinus(ctx, x, y);
 		}
 		ctx.restore();

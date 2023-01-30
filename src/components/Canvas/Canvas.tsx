@@ -52,7 +52,7 @@ const manageCanvas = (
 		);
 
 		resetCanvas(ctx);
-		drawPeptide(ctx, peptide);
+		drawPeptide(ctx, peptide, mouse);
 		// drawHoverPeptide(ctx, peptide, mouse.x, mouse.y);
 
 		// draw a red circle at the mouse position

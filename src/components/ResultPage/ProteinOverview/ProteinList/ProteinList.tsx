@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './ProteinList.module.scss';
+import { Link, useParams } from "react-router-dom";
 
 type ProteinProp = {
 	proteinString: string;
@@ -12,11 +13,15 @@ interface Props {
 }
 
 function ProteinList(props: Props) {
+	const shiftId = useParams().id;
 	const proteinElements = props.proteins?.map((protein, index) => {
 		return (
-			<div key={index} className={classes['protein-container']}>
-				{protein.proteinString.slice(0, protein.proteinString.length - 4)} {protein.mass.toFixed(2)} {Math.floor(protein.netCharge)}
-			</div>
+			<React.Fragment key={index}>
+				<div key={index} className={classes['protein-container']}>
+					{protein.proteinString.slice(0, protein.proteinString.length - 4)} {protein.mass.toFixed(2)} {Math.floor(protein.netCharge)}
+				</div>
+				<Link to={`/result/${shiftId ?? 1}/protein/${index + 1}`} className={classes['protein-link']}>{index + 1}</Link>
+			</React.Fragment>
 		);
 	});
 	return (

@@ -1,5 +1,5 @@
 import { Codon } from '../types/proteinTypes';
-import { AminoAcids, CodonToAminoAcid } from "./aminoAcids";
+import { AminoAcids, CodonToAminoAcid } from './aminoAcids';
 import { Protein } from '../types/proteinTypes';
 
 // Regex for finding proteins in a string
@@ -69,7 +69,7 @@ export const findProteins = (
 			netCharge += AminoAcids.get(aminoAcidLetter)?.netCharge ?? 0;
 			return {
 				threeLetterCode: codon,
-				aminoAcidLetter
+				aminoAcidLetter,
 			};
 		});
 		return {

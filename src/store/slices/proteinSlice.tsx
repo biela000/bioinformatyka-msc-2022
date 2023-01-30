@@ -4,7 +4,7 @@ import { translate, findProteins } from '../../utils/translation';
 import { Protein } from '../../types/proteinTypes';
 
 
-type ProteinState = {
+export type ProteinState = {
 	translatedAminoAcids: [Codon[], Codon[], Codon[]];
 	proteins: [Protein[], Protein[], Protein[]];
 	formattedAminoAcidString: [string, string, string];

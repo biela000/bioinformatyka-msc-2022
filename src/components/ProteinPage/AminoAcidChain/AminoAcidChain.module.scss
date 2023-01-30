@@ -1,0 +1,35 @@
+.amino-acid-chain-container {
+	height: 2em;
+	width: max-content;
+	max-width: 800px;
+	overflow-x: auto;
+
+	.amino-acid-chain {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 1em;
+		width: max-content;
+
+		&::before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 0.5em;
+			background-color: #999;
+			top: 50%;
+			transform: translateY(-50%);
+			z-index: -1;
+		}
+
+		.amino-acid {
+			background-color: darkgreen;
+			color: #fff;
+			border-radius: 50%;
+			width: 1.5rem;
+			aspect-ratio: 1;
+			display: grid;
+			place-items: center;
+		}
+	}
+}

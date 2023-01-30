@@ -88,6 +88,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			mass: 89.094,
 			draw: drawAminoAcid.drawAla,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar'
 		},
 	],
 	[
@@ -99,6 +100,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			mass: 121.154,
 			draw: drawAminoAcid.drawCys,
 			netCharge: 0,
+			sideChainPolarity: 'Brønsted acid'
 		},
 	],
 	[
@@ -110,6 +112,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			mass: 133.104,
 			draw: drawAminoAcid.drawAsp,
 			netCharge: -1,
+			sideChainPolarity: 'Brønsted base'
 		},
 	],
 	[
@@ -120,6 +123,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			mass: 147.131,
 			code: 'glu',
 			netCharge: -1,
+			sideChainPolarity: 'Brønsted base'
 		},
 	],
 	[
@@ -130,6 +134,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			mass: 165.192,
 			code: 'phe',
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar'
 		},
 	],
 	[
@@ -141,6 +146,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'gly',
 			draw: drawAminoAcid.drawGlu,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar'
 		},
 	],
 	[
@@ -152,6 +158,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'his',
 			draw: drawAminoAcid.drawHis,
 			netCharge: 0.1, // 10% positive 90% neutral
+			sideChainPolarity: 'Brønsted acid and base'
 		},
 	],
 	[
@@ -163,6 +170,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'ile',
 			draw: drawAminoAcid.drawIle,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar'
 		},
 	],
 	[
@@ -174,6 +182,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'lys',
 			draw: drawAminoAcid.drawLys,
 			netCharge: 1,
+			sideChainPolarity: 'Brønsted base'
 		},
 	],
 	[
@@ -186,6 +195,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'leu',
 			draw: drawAminoAcid.drawLeu,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar'
 		},
 	],
 	[
@@ -197,6 +207,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'met',
 			draw: drawAminoAcid.drawMet,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar'
 		},
 	],
 	[
@@ -208,6 +219,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'asn',
 			draw: drawAminoAcid.drawAsn,
 			netCharge: 0,
+			sideChainPolarity: 'Polar'
 		},
 	],
 	[
@@ -219,6 +231,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'pro',
 			draw: drawAminoAcid.drawPro,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar'
 		},
 	],
 	[
@@ -230,6 +243,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'gln',
 			draw: drawAminoAcid.drawGln,
 			netCharge: 0,
+			sideChainPolarity: 'Polar'
 		},
 	],
 	[
@@ -241,6 +255,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'arg',
 			draw: drawAminoAcid.drawArg,
 			netCharge: 1,
+			sideChainPolarity: 'Basic polar'
 		},
 	],
 	[
@@ -252,6 +267,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'ser',
 			draw: drawAminoAcid.drawSer,
 			netCharge: 0,
+			sideChainPolarity: 'Polar'
 		},
 	],
 	[
@@ -263,6 +279,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'thr',
 			draw: drawAminoAcid.drawThr,
 			netCharge: 0,
+			sideChainPolarity: 'Polar'
 		},
 	],
 	[
@@ -275,6 +292,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'Sec',
 			draw: drawAminoAcid.drawSec,
 			netCharge: -1,
+			sideChainPolarity: 'Polar'
 		},
 	],
 	[
@@ -286,6 +304,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'val',
 			draw: drawAminoAcid.drawVal,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar'
 		},
 	],
 	[
@@ -297,6 +316,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'trp',
 			draw: drawAminoAcid.drawTrp,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar'
 		},
 	],
 	[
@@ -308,6 +328,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'tyr',
 			draw: drawAminoAcid.drawTyr,
 			netCharge: 0,
+			sideChainPolarity: 'Brønsted acid'
 		},
 	],
 	['STOP', { letter: 'STOP', name: 'STOP' }],

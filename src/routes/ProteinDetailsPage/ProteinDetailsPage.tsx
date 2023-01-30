@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { ProteinState } from "../../store/slices/proteinSlice";
 import NetCharge from "../../components/ProteinDetailsPage/NetCharge/NetCharge";
+import HydropathyIndex from "../../components/ProteinDetailsPage/HydropathyIndex/HydropathyIndex";
 
 function ProteinDetailsPage() {
 	const shiftId = parseInt(useParams().id ?? "1") - 1;
@@ -13,6 +14,7 @@ function ProteinDetailsPage() {
 	return (
 		<div className={classes.proteinDetailsPage} data-testid="ProteinDetailsPageComponent">
 			<NetCharge chain={protein.aminoAcidChain} netCharge={protein.netCharge} />
+			<HydropathyIndex chain={protein.aminoAcidChain} />
 		</div>
 	);
 }

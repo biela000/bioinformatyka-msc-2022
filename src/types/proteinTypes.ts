@@ -4,6 +4,8 @@ export type Codon = {
 };
 
 export type AminoAcid = {
+	hydropathyIndex?: number;
+	sideChainPolarity?: string;
 	netCharge?: number;
 	letter: string;
 	name: string;

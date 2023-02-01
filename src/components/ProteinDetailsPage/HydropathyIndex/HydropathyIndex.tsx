@@ -1,18 +1,8 @@
 import React from "react";
-import classes from "./ProteinDetailsPage.module.scss";
-import { Codon } from "../../../types/proteinTypes";
-import { AminoAcids } from "../../../utils/aminoAcids";
-import { Bar, Line } from "react-chartjs-2";
-import {
-	BarElement,
-	CategoryScale,
-	Chart as ChartJS,
-	ChartData,
-	LinearScale,
-	LineElement,
-	PointElement,
-	Tooltip
-} from "chart.js";
+import {Codon} from "../../../types/proteinTypes";
+import {AminoAcids} from "../../../utils/aminoAcids";
+import {Line} from "react-chartjs-2";
+import {CategoryScale, Chart as ChartJS, LinearScale, LineElement, PointElement, Tooltip} from "chart.js";
 
 interface HydropathyIndexProps {
 	chain: Codon[];
@@ -40,7 +30,7 @@ function HydropathyIndex({ chain }: HydropathyIndexProps) {
 		labels: labels,
 		datasets: [
 			{
-				label: 'Dataset 1',
+				label: 'Hydropathy Index',
 				data: currentChainHydropathyIndexes,
 				backgroundColor: 'rgb(255, 99, 132)',
 				borderColor: 'rgb(255, 99, 132)',

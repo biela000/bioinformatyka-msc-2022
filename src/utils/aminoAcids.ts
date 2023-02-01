@@ -1,5 +1,5 @@
-import {AminoAcid} from '../types/proteinTypes';
-import {drawAminoAcid} from '../canvas/drawAminoAcid';
+import { AminoAcid } from '../types/proteinTypes';
+import { drawAminoAcid } from '../canvas/drawAminoAcid';
 
 export const CodonToAminoAcid: { [key: string]: string } = {
 	UUU: 'F',

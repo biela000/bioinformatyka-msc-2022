@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import {Codon} from '../../../types/proteinTypes';
 import {AminoAcids} from '../../../utils/aminoAcids';
 import {Line} from 'react-chartjs-2';
@@ -17,17 +17,32 @@ ChartJS.register(
 );
 
 function HydropathyIndex({ chain }: HydropathyIndexProps) {
+	const { windowOptions, biggestPossibleWindow } = useMemo(() => {
+		const allWindows = [21, 19, 17, 15, 13, 11, 9, 7, 5, 3];
+		const biggestPossibleWindow = allWindows.find(window => chain.length * 2 >= window) ?? 3;
+		const biggestPossibleWindowIndex = allWindows.indexOf(biggestPossibleWindow);
+		const windows = allWindows.slice(biggestPossibleWindowIndex);
+		const windowOptions = windows.map((window, index) => <option key={index} value={window}>{window}</option>);
+		return { windowOptions, biggestPossibleWindow };
+	}, [chain]);
+
+	const [window, setWindow] = useState(biggestPossibleWindow);
+
+	const handleWindowChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+		setWindow(parseInt(event.target.value));
+	};
+
 	// Omitting the last element because the last element is STOP
 	const currentChainHydropathyIndexes: number[] = [];
 	const labels: number[] = [];
 
-	for (let i = 0; i + 8 < chain.length; i++) {
+	for (let i = 0; i + window - 1 < chain.length - 1; i++) {
 		let sum = 0;
-		for (let o = i; o <= i + 8; o++) {
+		for (let o = i; o <= i + window - 1; o++) {
 			sum +=
 				AminoAcids.get(chain[o].aminoAcidLetter)?.hydropathyIndex ?? 0;
 		}
-		currentChainHydropathyIndexes.push(sum / 9);
+		currentChainHydropathyIndexes.push(sum / window);
 		labels.push(i);
 	}
 
@@ -64,7 +79,12 @@ function HydropathyIndex({ chain }: HydropathyIndexProps) {
 		<div style={{ maxWidth: '1000px'}}>
 			{chain.length < 6 && <p>Protein must be at least 6 amino acids long to display its
 															hydropathy plot</p>}
-			{chain.length >= 6 && <Line data={data} options={options} />}
+			{chain.length >= 6 && (
+				<React.Fragment>
+					<Line data={data} options={options} />
+					<select name="window-select" value={window} onChange={handleWindowChange}>{windowOptions}</select>
+				</React.Fragment>
+			)}
 		</div>
 	);
 }

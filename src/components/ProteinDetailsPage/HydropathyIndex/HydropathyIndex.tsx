@@ -62,7 +62,9 @@ function HydropathyIndex({ chain }: HydropathyIndexProps) {
 
 	return (
 		<div style={{ maxWidth: '1000px'}}>
-			<Line data={data} options={options} />
+			{chain.length < 6 && <p>Protein must be at least 6 amino acids long to display its
+															hydropathy plot</p>}
+			{chain.length >= 6 && <Line data={data} options={options} />}
 		</div>
 	);
 }

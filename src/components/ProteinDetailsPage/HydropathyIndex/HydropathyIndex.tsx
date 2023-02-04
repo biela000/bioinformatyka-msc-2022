@@ -40,12 +40,14 @@ function HydropathyIndex({ chain }: HydropathyIndexProps) {
 				backgroundColor: 'rgb(255, 99, 132)',
 				borderColor: 'rgb(255, 99, 132)',
 				tension: 0.4,
+				pointRadius: 0,
 			},
 		],
 	};
 
 	const options = {
 		responsive: true,
+		animation: false as any,
 		scales: {
 			x: {
 				min: 0,

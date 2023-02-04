@@ -17,7 +17,8 @@ export interface IsoelectricPointProps {
 }
 
 export default function IsoelectricPoint({ chain }: IsoelectricPointProps) {
-	const pI = calculateIsoelectricPoint(chain.join(''))
+	const stringChain = chain.map((codon) => codon.aminoAcidLetter).join('');
+	const pI = calculateIsoelectricPoint(stringChain);
 	const options = {
 		scales: {
 			x: {

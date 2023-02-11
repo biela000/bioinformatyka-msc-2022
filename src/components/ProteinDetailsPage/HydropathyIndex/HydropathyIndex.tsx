@@ -63,6 +63,10 @@ function HydropathyIndex({ chain }: HydropathyIndexProps) {
 		},
 	};
 
+	const grandAverageHydropathyIndex = chain.slice(0, chain.length - 1).reduce((a, b) => {
+		return a + (AminoAcids.get(b.aminoAcidLetter)?.hydropathyIndex ?? 0);
+	}, 0) / (chain.length - 1);
+
 	return (
 		<div style={{ maxWidth: '1000px'}}>
 			{chain.length < 6 && <p>Protein must be at least 6 amino acids long to display its
@@ -71,6 +75,7 @@ function HydropathyIndex({ chain }: HydropathyIndexProps) {
 				<React.Fragment>
 					<Line data={data} options={options} />
 					<select name="window-select" value={window} onChange={handleWindowChange}>{windowOptions}</select>
+					<p>Grand average hydropathy index: {grandAverageHydropathyIndex}</p>
 				</React.Fragment>
 			)}
 		</div>

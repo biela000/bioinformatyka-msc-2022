@@ -7,6 +7,7 @@ import NetCharge from '../../components/ProteinDetailsPage/NetCharge/NetCharge';
 import HydropathyIndex from '../../components/ProteinDetailsPage/HydropathyIndex/HydropathyIndex';
 import IsoelectricPoint from "../../components/ProteinDetailsPage/IsoelectricPoint/IsoelectricPoint";
 import Bulkiness from "../../components/ProteinDetailsPage/Bulkiness/Bulkiness";
+import ExtinctionCoefficient from "../../components/ProteinDetailsPage/ExtinctionCoefficient/ExtinctionCoefficient";
 
 function ProteinDetailsPage() {
 	const shiftId = parseInt(useParams().id ?? '1') - 1;
@@ -15,6 +16,8 @@ function ProteinDetailsPage() {
 		(state: { protein: ProteinState }) =>
 			state.protein.proteins[shiftId][proteinId],
 	);
+
+	console.log(protein);
 
 	return (
 		<div
@@ -28,6 +31,7 @@ function ProteinDetailsPage() {
 			<HydropathyIndex chain={protein.aminoAcidChain} />
 			<Bulkiness chain={protein.aminoAcidChain} />
 			<IsoelectricPoint chain={protein.aminoAcidChain} />
+			<ExtinctionCoefficient chain={protein.aminoAcidChain} proteinMass={protein.mass} />
 		</div>
 
 	);

@@ -11,6 +11,7 @@ export type AminoAcid = {
 	name: string;
 	code?: string;
 	mass?: number;
+	bulkiness?: number;
 	// TODO: possibly add mass, charge, etc.
 
 	draw?: (

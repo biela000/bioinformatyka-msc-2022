@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import {Codon} from '../../../types/proteinTypes';
 import {AminoAcids} from '../../../utils/aminoAcids';
 import {Line} from 'react-chartjs-2';
 import {CategoryScale, Chart as ChartJS, LinearScale, LineElement, PointElement, Tooltip,} from 'chart.js';
 import useWindowOptions from '../../../hooks/useWindowOptions';
 
-interface HydropathyIndexProps {
+interface BulkinessProps {
 	chain: Codon[];
 }
 
@@ -17,20 +17,20 @@ ChartJS.register(
 	PointElement,
 );
 
-function HydropathyIndex({ chain }: HydropathyIndexProps) {
+function Bulkiness({ chain }: BulkinessProps) {
 	const { windowOptions, window, handleWindowChange } = useWindowOptions(chain);
 
 	// Omitting the last element because the last element is STOP
-	const currentChainHydropathyIndexes: number[] = [];
+	const currentBulkinessValues: number[] = [];
 	const labels: number[] = [];
 
 	for (let i = 0; i + window - 1 < chain.length - 1; i++) {
 		let sum = 0;
 		for (let o = i; o <= i + window - 1; o++) {
 			sum +=
-				AminoAcids.get(chain[o].aminoAcidLetter)?.hydropathyIndex ?? 0;
+				AminoAcids.get(chain[o].aminoAcidLetter)?.bulkiness ?? 0;
 		}
-		currentChainHydropathyIndexes.push(sum / window);
+		currentBulkinessValues.push(sum / window);
 		labels.push(i);
 	}
 
@@ -38,8 +38,8 @@ function HydropathyIndex({ chain }: HydropathyIndexProps) {
 		labels: labels,
 		datasets: [
 			{
-				label: 'Hydropathy Index',
-				data: currentChainHydropathyIndexes,
+				label: 'Bulkiness',
+				data: currentBulkinessValues,
 				backgroundColor: 'rgb(255, 99, 132)',
 				borderColor: 'rgb(255, 99, 132)',
 				tension: 0.4,
@@ -66,7 +66,7 @@ function HydropathyIndex({ chain }: HydropathyIndexProps) {
 	return (
 		<div style={{ maxWidth: '1000px'}}>
 			{chain.length < 6 && <p>Protein must be at least 6 amino acids long to display its
-															hydropathy plot</p>}
+				hydropathy plot</p>}
 			{chain.length >= 6 && (
 				<React.Fragment>
 					<Line data={data} options={options} />
@@ -77,4 +77,4 @@ function HydropathyIndex({ chain }: HydropathyIndexProps) {
 	);
 }
 
-export default HydropathyIndex;
+export default Bulkiness;

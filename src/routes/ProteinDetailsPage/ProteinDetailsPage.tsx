@@ -6,6 +6,7 @@ import { ProteinState } from '../../store/slices/proteinSlice';
 import NetCharge from '../../components/ProteinDetailsPage/NetCharge/NetCharge';
 import HydropathyIndex from '../../components/ProteinDetailsPage/HydropathyIndex/HydropathyIndex';
 import IsoelectricPoint from "../../components/ProteinDetailsPage/IsoelectricPoint/IsoelectricPoint";
+import Bulkiness from "../../components/ProteinDetailsPage/Bulkiness/Bulkiness";
 
 function ProteinDetailsPage() {
 	const shiftId = parseInt(useParams().id ?? '1') - 1;
@@ -25,6 +26,7 @@ function ProteinDetailsPage() {
 				netCharge={protein.netCharge}
 			/>
 			<HydropathyIndex chain={protein.aminoAcidChain} />
+			<Bulkiness chain={protein.aminoAcidChain} />
 			<IsoelectricPoint chain={protein.aminoAcidChain} />
 		</div>
 

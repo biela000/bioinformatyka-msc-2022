@@ -9,7 +9,7 @@ function Canvas({ peptide }: CanvasProps) {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	useEffect(() => {
 		const canvas = canvasRef.current!;
-		manageCanvas(canvas, 1900, 700, peptide ?? 'ACDGILSUV');
+		manageCanvas(canvas, 1900, 700, peptide ?? 'ACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUVACDGILSUV');
 	}, [peptide]);
 
 	return (
@@ -55,8 +55,11 @@ const manageCanvas = (
 			-height / 2 + cameraOffset.y,
 		);
 
+		const cameraXMin = -cameraOffset.x - width / cameraZoom;
+		const cameraXMax = -cameraOffset.x + Math.max(width / cameraZoom, width); // if zoomed out, draw the bigger portion of the canvas
+
 		resetCanvas(ctx);
-		drawPeptide(ctx, peptide, mouse);
+		drawPeptide(ctx, peptide, mouse, { min: cameraXMin, max: cameraXMax });
 		// drawHoverPeptide(ctx, peptide, mouse.x, mouse.y);
 
 		// draw a red circle at the mouse position

@@ -5,6 +5,8 @@ export const tan36 = 0.80902; /// for use with pentagons
 
 const scalingFactor = 2;
 const baseSize = 30 * scalingFactor;
+const baseDistance = baseSize * 3;
+
 export const distance = baseSize;
 const lineWidth = baseSize / 15;
 const fontSize = baseSize / 2;
@@ -24,7 +26,7 @@ type MousePosition = {
 	y: number;
 }
 
-export const drawPeptide = (ctx: CanvasRenderingContext2D, acidString: string, mousePosition: MousePosition) => {
+export const drawPeptide = (ctx: CanvasRenderingContext2D, acidString: string, mousePosition: MousePosition, cameraXMinMax: {min: number, max: number}) => {
 	// starting point
 	let x = 100,
 		y = 320;
@@ -41,6 +43,11 @@ export const drawPeptide = (ctx: CanvasRenderingContext2D, acidString: string, m
 
 	let inverted = false;
 	for (let i = 0; i < acidString.length; i++) {
+		if(x < cameraXMinMax.min - baseDistance || x > cameraXMinMax.max) {
+			[x, y] = getNewBasePos(ctx, x, y, inverted);
+			inverted = !inverted;
+			continue;
+		}
 		if (i === 0) {
 			drawNH3(ctx, x, y);
 		} else {
@@ -119,6 +126,17 @@ export const drawBase = (
 	}
 	ctx.restore();
 	return [x, y, peptideX, peptideY];
+};
+
+// similar to the drawBase function, but only returns new positions, without actually drawing anything
+export const getNewBasePos = (ctx: CanvasRenderingContext2D, x: number, y: number, inverted: boolean = false) => {
+	x = x + baseDistance;
+	if(!inverted) {
+		y = y + distance * tan30;
+	} else {
+		y = y - distance * tan30;
+	}
+	return [x, y];
 };
 
 export const drawNH3 = (

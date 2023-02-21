@@ -94,7 +94,31 @@ export const drawAminoAcid = {
 			drawOMinus(ctx, x - fontHeight(ctx), y + fontHeight(ctx));
 		}
 	},
-	drawGlu: undefined,
+	drawGlu: (
+		ctx: CanvasRenderingContext2D,
+		x: number,
+		y: number,
+		inverted: boolean = false,
+	) => {
+		if(inverted) {
+			[x, y] = oneLine(ctx, x, y, x - distance * (1-tan36), y - distance);
+			[x, y] = oneLine(ctx, x, y, x + distance * (1-tan30), y - distance * tan36);
+			[x, y] = oneLine(ctx, x, y, x - distance * (1-tan30), y - distance * tan36);
+			let [oxygenX, oxygenY] = doubleLine(ctx, x, y, x - distance, y);
+			text(ctx, oxygenX - fontHeight(ctx) * 0.5, oxygenY + fontHeight(ctx) / 2, 'O');
+			[x, y] = oneLine(ctx, x, y, x + distance * (1-tan30), y - distance);
+			text(ctx, x + fontHeight(ctx) * 0.7, y, 'O⁻');
+		} else {
+			[x, y] = oneLine(ctx, x, y, x - distance * (1-tan36), y + distance);
+			[x, y] = oneLine(ctx, x, y, x + distance * (1-tan30), y + distance * tan36);
+			[x, y] = oneLine(ctx, x, y, x - distance * (1-tan30), y + distance * tan36);
+			let [oxygenX, oxygenY] = doubleLine(ctx, x, y, x - distance, y);
+			text(ctx, oxygenX - fontHeight(ctx) * 0.5, oxygenY + fontHeight(ctx) / 2, 'O');
+			[x, y] = oneLine(ctx, x, y, x + distance * (1-tan30), y + distance);
+			text(ctx, x + fontHeight(ctx) * 0.7, y + fontHeight(ctx) / 2, 'O⁻');
+
+		}
+	},
 	drawPhe: undefined,
 	drawGly: (
 		ctx: CanvasRenderingContext2D,

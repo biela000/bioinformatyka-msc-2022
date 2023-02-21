@@ -304,6 +304,20 @@ export const drawHexagon = (
 	ctx.restore();
 }
 
+export const smallWhiteCircle = (
+	ctx: CanvasRenderingContext2D,
+	x: number,
+	y: number,
+) => {
+	ctx.save();
+	ctx.beginPath();
+	ctx.arc(x, y, 15, 0, 2 * Math.PI);
+	ctx.fillStyle = 'white';
+	ctx.fill();
+	ctx.closePath();
+	ctx.restore();
+}
+
 export const text = (ctx: CanvasRenderingContext2D, x: number, y: number, text: string) => {
 	ctx.beginPath();
 	const width = ctx.measureText(text).width;

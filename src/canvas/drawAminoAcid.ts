@@ -3,7 +3,7 @@ import {
 	doubleLine, drawHexagon,
 	drawOMinus,
 	fontHeight,
-	oneLine,
+	oneLine, smallWhiteCircle,
 	tan30,
 	tan36,
 	text,
@@ -180,7 +180,31 @@ export const drawAminoAcid = {
 			oneLine(ctx, x, y, x + distance, y - distance * tan30);
 		}
 	},
-	drawMet: undefined,
+	drawMet: (
+		ctx: CanvasRenderingContext2D,
+		x: number,
+		y: number,
+		inverted: boolean = false,
+	) => {
+		let textX: number, textY: number;
+		if (inverted) {
+			[x, y] = oneLine(ctx, x, y, x - distance * (1-tan36), y - distance);
+			[x, y] = oneLine(ctx, x, y, x + distance * (1-tan30), y - distance);
+			[x, y] = oneLine(ctx, x, y, x - distance * (1-tan30), y - distance);
+			textX = x;
+			textY = y;
+			[x, y] = oneLine(ctx, x, y, x + distance * (1-tan30), y - distance);
+		} else {
+			[x, y] = oneLine(ctx, x, y, x - distance * (1-tan36), y + distance);
+			[x, y] = oneLine(ctx, x, y, x + distance * (1-tan30), y + distance);
+			[x, y] = oneLine(ctx, x, y, x - distance * (1-tan30), y + distance);
+			textX = x;
+			textY = y;
+			[x, y] = oneLine(ctx, x, y, x + distance * (1-tan30), y + distance);
+		}
+		smallWhiteCircle(ctx, textX, textY);
+		text(ctx, textX, textY + fontHeight(ctx) / 2, 'S');
+	},
 	drawAsn: undefined,
 	drawPro: undefined,
 	drawGln: undefined,

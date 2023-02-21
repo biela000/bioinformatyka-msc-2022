@@ -130,6 +130,7 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			name: 'Phenylalanine',
 			mass: 165.192,
 			code: 'phe',
+			draw: drawAminoAcid.drawPhe,
 			netCharge: 0,
 		},
 	],

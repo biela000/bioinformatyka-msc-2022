@@ -193,6 +193,33 @@ export const oneLine = (
 	return [endX, endY];
 };
 
+export const dottedLine = (
+	ctx: CanvasRenderingContext2D,
+	startX: number,
+	startY: number,
+	endX: number,
+	endY: number,
+): [number, number] => {
+	ctx.save();
+	ctx.setLineDash([3, 3]);
+	const [x, y] = oneLine(ctx, startX, startY, endX, endY);
+	ctx.restore();
+	return [x, y];
+}
+
+export const lineAtAngle = (
+	ctx: CanvasRenderingContext2D,
+	startX: number,
+	startY: number,
+	length: number,
+	angle: number,
+): [number, number] => {
+	const properAngle = angle * (Math.PI / 180);
+	const endX = startX + length * Math.cos(properAngle);
+	const endY = startY + length * Math.sin(properAngle);
+	return dottedDoubleLine(ctx, startX, startY, endX, endY);
+}
+
 export const doubleLine = (
 	ctx: CanvasRenderingContext2D,
 	startX: number,
@@ -204,7 +231,7 @@ export const doubleLine = (
 	const [vectorX, vectorY] = [endX - startX, endY - startY];
 	// multiplying the perpendicular vector by 0.07 to make it smaller
 
-	// WARNING: this is a magic number, and should be changed if the distance is changed #IMPORTANT
+	// WARNING: this is a magic number, and should be changed if the distance is changed
 	const [perpendicularVectorX, perpendicularVectorY] = [
 		-vectorY * 0.07,
 		vectorX * 0.07,
@@ -220,6 +247,62 @@ export const doubleLine = (
 	ctx.closePath();
 	return [endX, endY];
 };
+
+// copying the above function - only dotted line is the left one
+export const dottedDoubleLine = (
+	ctx: CanvasRenderingContext2D,
+	startX: number,
+	startY: number,
+	endX: number,
+	endY: number,
+): [number, number] => {
+	// calculating the vector and the perpendicular vector
+	const [vectorX, vectorY] = [endX - startX, endY - startY];
+	// multiplying the perpendicular vector by 0.07 to make it smaller
+
+	// WARNING: this is a magic number, and should be changed if the distance is changed
+	const [perpendicularVectorX, perpendicularVectorY] = [
+		-vectorY * 0.07,
+		vectorX * 0.07,
+	];
+
+	ctx.beginPath();
+	ctx.moveTo(startX, startY);
+	ctx.moveTo(startX + perpendicularVectorX, startY + perpendicularVectorY);
+	ctx.lineTo(endX + perpendicularVectorX, endY + perpendicularVectorY);
+	ctx.stroke();
+	ctx.setLineDash([3, 3])
+	ctx.moveTo(startX - perpendicularVectorX, startY - perpendicularVectorY);
+	ctx.lineTo(endX - perpendicularVectorX, endY - perpendicularVectorY);
+	ctx.stroke();
+	ctx.setLineDash([0, 0])
+	ctx.closePath();
+	return [endX, endY];
+}
+
+export const drawHexagon = (
+	ctx: CanvasRenderingContext2D,
+	x: number,
+	y: number,
+	inverted: boolean = false,
+	dotted: boolean = true,
+) => {
+	ctx.save();
+	const [startX, startY] = [x, y];
+	const angles = [180, 120, 60, 0, -60, -120];
+	const invertedAngles = [-60, -120, 180, 120, 60, 0];
+
+	for(let i = 0; i < 6; i++) {
+		if(inverted) {
+			[x, y] = lineAtAngle(ctx, x, y, distance, invertedAngles[i]);
+		}
+		else {
+			[x, y] = lineAtAngle(ctx, x, y, distance, angles[i]);
+		}
+	}
+
+	ctx.restore();
+}
 
 export const text = (ctx: CanvasRenderingContext2D, x: number, y: number, text: string) => {
 	ctx.beginPath();

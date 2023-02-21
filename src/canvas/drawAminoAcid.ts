@@ -1,13 +1,13 @@
 import {
 	distance,
-	doubleLine,
+	doubleLine, drawHexagon,
 	drawOMinus,
 	fontHeight,
 	oneLine,
 	tan30,
 	tan36,
 	text,
-} from './canvas';
+} from "./canvas";
 
 export const drawAminoAcid = {
 	drawAla: (
@@ -119,7 +119,21 @@ export const drawAminoAcid = {
 
 		}
 	},
-	drawPhe: undefined,
+	drawPhe: (
+		ctx: CanvasRenderingContext2D,
+		x: number,
+		y: number,
+		inverted: boolean = false,
+	) => {
+		if(inverted) {
+			[x, y] = oneLine(ctx, x, y, x + distance * (1-tan30), y - distance);
+			[x, y] = oneLine(ctx, x, y, x - distance * (1-tan30), y - distance);
+		} else {
+			[x, y] = oneLine(ctx, x, y, x + distance * (1-tan30), y + distance);
+			[x, y] = oneLine(ctx, x, y, x - distance * (1-tan30), y + distance);
+		}
+		drawHexagon(ctx, x, y, inverted);
+	},
 	drawGly: (
 		ctx: CanvasRenderingContext2D,
 		x: number,

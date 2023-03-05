@@ -3,7 +3,6 @@ import { Codon } from '../../types/proteinTypes';
 import { translate, findProteins } from '../../utils/translation';
 import { Protein } from '../../types/proteinTypes';
 
-
 export type ProteinState = {
 	translatedAminoAcids: [Codon[], Codon[], Codon[]];
 	proteins: [Protein[], Protein[], Protein[]];

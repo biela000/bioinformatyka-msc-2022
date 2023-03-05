@@ -1,14 +1,4 @@
 import { AminoAcid } from '../types/proteinTypes';
-import {
-	distance,
-	doubleLine,
-	drawOMinus,
-	fontHeight,
-	oneLine,
-	tan30,
-	tan36,
-	text,
-} from '../canvas/canvas';
 import { drawAminoAcid } from '../canvas/drawAminoAcid';
 
 export const CodonToAminoAcid: { [key: string]: string } = {
@@ -88,6 +78,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			mass: 89.094,
 			draw: drawAminoAcid.drawAla,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar',
+			hydropathyIndex: 1.8,
+			bulkiness: 11.5,
 		},
 	],
 	[
@@ -99,6 +92,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			mass: 121.154,
 			draw: drawAminoAcid.drawCys,
 			netCharge: 0,
+			sideChainPolarity: 'Brønsted acid',
+			hydropathyIndex: 2.5,
+			bulkiness: 13.46,
 		},
 	],
 	[
@@ -110,6 +106,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			mass: 133.104,
 			draw: drawAminoAcid.drawAsp,
 			netCharge: -1,
+			sideChainPolarity: 'Brønsted base',
+			hydropathyIndex: -3.5,
+			bulkiness: 11.68,
 		},
 	],
 	[
@@ -121,6 +120,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'glu',
 			draw: drawAminoAcid.drawGlu,
 			netCharge: -1,
+			sideChainPolarity: 'Brønsted base',
+			hydropathyIndex: -3.5,
+			bulkiness: 13.57,
 		},
 	],
 	[
@@ -132,6 +134,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'phe',
 			draw: drawAminoAcid.drawPhe,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar',
+			hydropathyIndex: 2.8,
+			bulkiness: 19.8,
 		},
 	],
 	[
@@ -143,6 +148,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'gly',
 			draw: drawAminoAcid.drawGly,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar',
+			hydropathyIndex: -0.4,
+			bulkiness: 3.4,
 		},
 	],
 	[
@@ -154,6 +162,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'his',
 			draw: drawAminoAcid.drawHis,
 			netCharge: 0.1, // 10% positive 90% neutral
+			sideChainPolarity: 'Brønsted acid and base',
+			hydropathyIndex: -3.2,
+			bulkiness: 13.69,
 		},
 	],
 	[
@@ -165,6 +176,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'ile',
 			draw: drawAminoAcid.drawIle,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar',
+			hydropathyIndex: 4.5,
+			bulkiness: 21.4,
 		},
 	],
 	[
@@ -176,6 +190,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'lys',
 			draw: drawAminoAcid.drawLys,
 			netCharge: 1,
+			sideChainPolarity: 'Brønsted base',
+			hydropathyIndex: -3.9,
+			bulkiness: 15.71,
 		},
 	],
 	[
@@ -188,6 +205,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'leu',
 			draw: drawAminoAcid.drawLeu,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar',
+			hydropathyIndex: 3.8,
+			bulkiness: 21.4,
 		},
 	],
 	[
@@ -199,6 +219,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'met',
 			draw: drawAminoAcid.drawMet,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar',
+			hydropathyIndex: 1.9,
+			bulkiness: 16.25,
 		},
 	],
 	[
@@ -210,6 +233,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'asn',
 			draw: drawAminoAcid.drawAsn,
 			netCharge: 0,
+			sideChainPolarity: 'Polar',
+			hydropathyIndex: -3.5,
+			bulkiness: 12.82,
 		},
 	],
 	[
@@ -221,6 +247,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'pro',
 			draw: drawAminoAcid.drawPro,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar',
+			hydropathyIndex: -1.6,
+			bulkiness: 17.43,
 		},
 	],
 	[
@@ -232,6 +261,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'gln',
 			draw: drawAminoAcid.drawGln,
 			netCharge: 0,
+			sideChainPolarity: 'Polar',
+			hydropathyIndex: -3.5,
+			bulkiness: 14.45,
 		},
 	],
 	[
@@ -243,6 +275,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'arg',
 			draw: drawAminoAcid.drawArg,
 			netCharge: 1,
+			sideChainPolarity: 'Basic polar',
+			hydropathyIndex: -4.5,
+			bulkiness: 14.28,
 		},
 	],
 	[
@@ -254,6 +289,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'ser',
 			draw: drawAminoAcid.drawSer,
 			netCharge: 0,
+			sideChainPolarity: 'Polar',
+			hydropathyIndex: -0.8,
+			bulkiness: 9.47,
 		},
 	],
 	[
@@ -265,6 +303,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'thr',
 			draw: drawAminoAcid.drawThr,
 			netCharge: 0,
+			sideChainPolarity: 'Polar',
+			hydropathyIndex: -0.7,
+			bulkiness: 15.77,
 		},
 	],
 	[
@@ -277,6 +318,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'Sec',
 			draw: drawAminoAcid.drawSec,
 			netCharge: -1,
+			sideChainPolarity: 'Polar',
+			hydropathyIndex: undefined,
+			bulkiness: undefined,
 		},
 	],
 	[
@@ -288,6 +332,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'val',
 			draw: drawAminoAcid.drawVal,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar',
+			hydropathyIndex: 4.2,
+			bulkiness: 21.57,
 		},
 	],
 	[
@@ -299,6 +346,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'trp',
 			draw: drawAminoAcid.drawTrp,
 			netCharge: 0,
+			sideChainPolarity: 'Nonpolar',
+			hydropathyIndex: -0.9,
+			bulkiness: 21.67,
 		},
 	],
 	[
@@ -310,6 +360,9 @@ export const AminoAcids: Map<string, AminoAcid> = new Map([
 			code: 'tyr',
 			draw: drawAminoAcid.drawTyr,
 			netCharge: 0,
+			sideChainPolarity: 'Brønsted acid',
+			hydropathyIndex: -1.3,
+			bulkiness: 18.03,
 		},
 	],
 	['STOP', { letter: 'STOP', name: 'STOP' }],

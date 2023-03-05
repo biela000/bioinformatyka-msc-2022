@@ -1,11 +1,11 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { proteinStore } from './store/store';
+import {Provider} from 'react-redux';
+import {proteinStore} from './store/store';
 import HomePage from './routes/HomePage/HomePage';
 import ResultPage from './routes/ResultPage/ResultPage';
 import ProteinPage from './routes/ProteinPage/ProteinPage';
 import ProteinDetailsPage from './routes/ProteinDetailsPage/ProteinDetailsPage';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import './App.scss';
 import Canvas from './components/Canvas/Canvas';
 

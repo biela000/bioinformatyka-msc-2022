@@ -12,7 +12,9 @@ function ProteinOverview() {
 
 	const proteins = rnaData.proteins[resultIndex]?.map(protein => {
 		return {
-			proteinString: protein.aminoAcidChain.map(codon => codon.aminoAcidLetter).join(''),
+			proteinString: protein.aminoAcidChain
+				.map(codon => codon.aminoAcidLetter)
+				.join(''),
 			mass: protein.mass,
 			netCharge: protein.netCharge,
 		};
